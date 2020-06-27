@@ -35,10 +35,10 @@ namespace WishList.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int id)
         {
-            var itemToDelete = _context.Items.Single(x => x.Id == Id);
-            _context.Items.Remove(itemToDelete);
+            var item = _context.Items.FirstOrDefault(x => x.Id == id);
+            _context.Items.Remove(item);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
